@@ -134,6 +134,7 @@ class Board:
                     square.f = 0
                     square.g = 0
                     square.h = 0
+                    square.parent = None
         self.update_grid()
 
     def highlight_path_on_grid(self, path):
