@@ -5,6 +5,7 @@ class Board:
     def __init__(self, board):
         self.board = board
         self.root = tk.Tk()
+        self.root.title("A Star")
         self.canvas = tk.Canvas(self.root, width=400, height=400)
         self.canvas.pack()
         self.canvas.bind("<Button-1>", self.change_square_state)

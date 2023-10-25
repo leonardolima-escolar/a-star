@@ -107,7 +107,7 @@ class BoardGraph:
 
     def find_lowest_f(self, open_set):
         lowest_f_square = None
-        lowest_f_value = float('inf')
+        lowest_f_value = float("inf")
 
         for square_coordinates in open_set:
             square = self.graph[square_coordinates]
