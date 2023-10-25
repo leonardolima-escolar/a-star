@@ -43,21 +43,21 @@ class Board:
                 square = self.board.get_square((x, y))
                 if square:
                     if square.state == "goal":
-                        cor = "green"
+                        color = "green"
                     elif square.state == "start":
-                        cor = "red"
+                        color = "red"
                     elif square.state == "wall":
-                        cor = "black"
+                        color = "black"
                     elif square.state == "path":
-                        cor = "blue"
+                        color = "blue"
                     else:
-                        cor = "white"
+                        color = "white"
                     self.canvas.create_rectangle(
                         x * 40,
                         y * 40,
                         (x + 1) * 40,
                         (y + 1) * 40,
-                        fill=cor,
+                        fill=color,
                         outline="black",
                         tags="grid",
                     )
