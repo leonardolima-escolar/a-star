@@ -10,17 +10,17 @@ class Board:
         self.canvas.pack()
         self.canvas.bind("<Button-1>", self.change_square_state)
         self.run_button = tk.Button(self.root, text="Run", command=self.run_star)
-        self.run_button.pack()
+        self.run_button.pack(side="right")
         self.goal_button = tk.Button(self.root, text="Goal", command=self.set_goal)
-        self.goal_button.pack()
+        self.goal_button.pack(side="left")
         self.start_button = tk.Button(self.root, text="Start", command=self.set_start)
-        self.start_button.pack()
+        self.start_button.pack(side="left")
         self.default_button = tk.Button(
             self.root, text="Wall", command=self.set_default
         )
-        self.default_button.pack()
+        self.default_button.pack(side="left")
         self.reset_button = tk.Button(self.root, text="Reset", command=self.reset_board)
-        self.reset_button.pack()
+        self.reset_button.pack(side="right")
         self.grid_size = 10
         self.update_grid()
         self.selected_state = None
