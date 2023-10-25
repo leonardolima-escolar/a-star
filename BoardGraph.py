@@ -27,7 +27,7 @@ class BoardGraph:
                         continue
                     new_x, new_y = x + dx, y + dy
                     if (new_x, new_y) in self.graph:
-                        square.neighbors.append((new_x, new_y))
+                        square.add_neighbor((new_x, new_y))
 
     def create_initial_board(self, size=10):
         for x in range(size):
@@ -107,7 +107,7 @@ class BoardGraph:
 
     def find_lowest_f(self, open_set):
         lowest_f_square = None
-        lowest_f_value = float('inf')
+        lowest_f_value = float("inf")
 
         for square_coordinates in open_set:
             square = self.graph[square_coordinates]
