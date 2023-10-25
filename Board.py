@@ -91,19 +91,65 @@ class Board:
         if square:
             if self.selected_state == "goal":
                 if self.goal:
-                    self.board.get_square(self.goal).state = "empty"
+                    old_square = self.board.get_square(self.goal)
+                    old_square.state = "empty"
+                    old_square.f = 0
+                    old_square.g = 0
+                    old_square.h = 0
+                    old_square.parent = None
+                    # self.board.get_square(self.goal).state = "empty"
                 self.goal = (x, y)
                 square.state = "goal"
+                if square.f > 0:
+                    square.f = 0
+                    square.g = 0
+                    square.h = 0
+                    square.parent = None
             elif self.selected_state == "start":
                 if self.start:
-                    self.board.get_square(self.start).state = "empty"
+                    old_square = self.board.get_square(self.start)
+                    old_square.state = "empty"
+                    old_square.f = 0
+                    old_square.g = 0
+                    old_square.h = 0
+                    old_square.parent = None
+                    # self.board.get_square(self.start).state = "empty"
                 self.start = (x, y)
                 square.state = "start"
+                if square.f > 0:
+                    square.f = 0
+                    square.g = 0
+                    square.h = 0
+                    square.parent = None
             else:
-                if square.state == "wall" or square.state == "path":
+                if square.state == "wall":
                     square.state = "empty"
-                else:
+                elif square.state == "empty":
                     square.state = "wall"
+                elif square.state == "path":
+                    square.state = "empty"
+                    square.f = 0
+                    square.g = 0
+                    square.h = 0
+                    square.parent = None
+                elif square.state == "goal":
+                    square.state = "empty"
+                    square.f = 0
+                    square.g = 0
+                    square.h = 0
+                    square.parent = None
+                    self.goal = None
+                elif square.state == "start":
+                    square.state = "empty"
+                    square.f = 0
+                    square.g = 0
+                    square.h = 0
+                    square.parent = None
+                    self.start = None
+                # if square.state == "wall" or square.state == "path":
+                #     square.state = "empty"
+                # else:
+                #     square.state = "wall"
             self.update_grid()
 
     def run_star(self):
